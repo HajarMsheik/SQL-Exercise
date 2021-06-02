@@ -31,19 +31,44 @@ UPDATE students
 SET Points = 100
 WHERE Name = 'Alex';
 
-Creating table
+Creating table:
 
-CREATE TABLE  graduates (
-       ID int Not Null ,
-	Name varchar(255) Not Null UNIQUE,
-	Age int,
-	Gender varchar(14),
-        Points int,
-        Graduation  date,
-	PRIMARY KEY (ID)
+CREATE TABLE "graduates" (
+"ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+"Name" TEXT NOT Null UNIQUE,
+"Age" INTEGER,
+"Gender" TEXT,
+"Points" INTEGER,
+"Graduation" TEXT
 );
 
+INSERT INTO  graduates (Id,Name,Age,Gender,Points)
+VALUES (1,'Layal' ,18, 'F', 350);
+
+UPDATE graduates
+SET Graduation = '08/09/2018'
+WHERE name="Layal";
+
 DELETE FROM students WHERE Name='Layal';
+
+
+JOIN:
+
+1) SELECT employees.name, employees.Company, companies.Date
+FROM (employees
+INNER JOIN companies ON employees.Company = companies.name);
+
+2)
+SELECT e.name, e.Company, c.Date
+FROM employees as e, companies as c
+where e.Company = c.name AND Date<2000;
+
+3)
+SELECT  e.Company
+FROM employees as e, companies as c
+where e.Company = c.name AND Role="Graphic Designer";
+
+
 
 
 
